@@ -81,6 +81,12 @@ a[routerlink="/sso"] {
   @extend %vw-hide;
 }
 
+/* Hide Two-Factor menu in Organization settings */
+bit-nav-item[route="settings/two-factor"],
+a[href$="/settings/two-factor"] {
+  @extend %vw-hide;
+}
+
 /* Hide Business Owned checkbox */
 app-org-info > form:nth-child(1) > div:nth-child(3) {
   @extend %vw-hide;
