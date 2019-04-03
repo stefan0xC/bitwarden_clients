@@ -53,14 +53,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   async load() {
-    this.premium = await this.stateService.getHasPremiumPersonally();
-    this.hasFamilySponsorshipAvailable = await this.organizationService.canManageSponsorships();
-    const hasPremiumFromOrg = await this.stateService.getHasPremiumFromOrganization();
-    let billing = null;
-    if (!this.selfHosted) {
-      billing = await this.apiService.getUserBillingHistory();
-    }
-    this.hideSubscription =
-      !this.premium && hasPremiumFromOrg && (this.selfHosted || billing?.hasNoHistory);
+    this.hasFamilySponsorshipAvailable = false; // disable family Sponsorships in Vaultwarden
+    this.hideSubscription = true; // always hide subscriptions in Vaultwarden
   }
 }
