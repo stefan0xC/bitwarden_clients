@@ -51,6 +51,7 @@ export class OrgBillingHistoryViewComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
+    /* disable billing history
     const invoicesPromise = this.organizationBillingApiService.getBillingInvoices(
       this.organizationId,
       this.invoices.length > 0 ? this.invoices[this.invoices.length - 1].id : null,
@@ -70,6 +71,7 @@ export class OrgBillingHistoryViewComponent implements OnInit, OnDestroy {
     this.invoices = [...this.invoices, ...invoices];
     this.transactions = [...this.transactions, ...transactions];
     this.hasAdditionalHistory = !(invoices.length < pageSize && transactions.length < pageSize);
+    */
     this.loading = false;
   }
 }
