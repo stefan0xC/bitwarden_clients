@@ -1,5 +1,4 @@
 import { Component, NgZone, OnDestroy, OnInit } from "@angular/core";
-import { firstValueFrom } from "rxjs";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
@@ -51,18 +50,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   async load() {
-    this.premium = await firstValueFrom(
-      this.billingAccountProfileStateServiceAbstraction.hasPremiumPersonally$,
-    );
-    this.hasFamilySponsorshipAvailable = await this.organizationService.canManageSponsorships();
-    const hasPremiumFromOrg = await firstValueFrom(
-      this.billingAccountProfileStateServiceAbstraction.hasPremiumFromAnyOrganization$,
-    );
-    let billing = null;
-    if (!this.selfHosted) {
-      billing = await this.apiService.getUserBillingHistory();
-    }
-    this.hideSubscription =
-      !this.premium && hasPremiumFromOrg && (this.selfHosted || billing?.hasNoHistory);
+    this.hasFamilySponsorshipAvailable = false; // disable family Sponsorships in Vaultwarden
+    this.hideSubscription = true; // always hide subscriptions in Vaultwarden
   }
 }
