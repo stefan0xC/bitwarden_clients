@@ -59,6 +59,42 @@
 @import "./vault-filters";
 
 /**** START Vaultwarden CHANGES ****/
+/* This combines all selectors extending it into one */
+%vw-hide {
+  display: none !important;
+}
+
+/* This allows searching for the combined style in the browsers dev-tools (look into the head tag) */
+#vw-hide,
+head {
+  @extend %vw-hide;
+}
+
+/* Hide the Billing Page tab */
+bit-tab-link[route="billing"] {
+  @extend %vw-hide;
+}
+/* Hide Business Owned checkbox */
+app-org-info > form:nth-child(1) > div:nth-child(3) {
+  @extend %vw-hide;
+}
+
+/* Hide the `This account is owned by a business` checkbox and label */
+#ownedBusiness,
+label[for^="ownedBusiness"] {
+  @extend %vw-hide;
+}
+
+/* Hide Business Name */
+app-org-account form div bit-form-field.tw-block:nth-child(3) {
+  @extend %vw-hide;
+}
+
+/* Hide organization plans */
+app-organization-plans > form > h2.mt-5 {
+  @extend %vw-hide;
+}
+
 /* Replace the Bitwarden Shield at the top left with a Vaultwarden icon */
 .bwi-shield:before {
   content: "" !important;
