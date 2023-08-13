@@ -53,8 +53,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
   async load() {
     this.premium = await this.stateService.getHasPremiumPersonally();
     this.hasFamilySponsorshipAvailable = await this.organizationService.canManageSponsorships();
-    const hasPremiumFromOrg = await this.stateService.getHasPremiumFromOrganization();
-    let billing = null;
     this.hideSubscription = true;
   }
 }

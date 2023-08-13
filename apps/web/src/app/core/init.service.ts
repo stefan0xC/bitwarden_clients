@@ -4,10 +4,7 @@ import { WINDOW } from "@bitwarden/angular/services/injection-tokens";
 import { AbstractThemingService } from "@bitwarden/angular/services/theming/theming.service.abstraction";
 import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/abstractions/encrypt.service";
-import {
-  EnvironmentService as EnvironmentServiceAbstraction,
-  Urls,
-} from "@bitwarden/common/abstractions/environment.service";
+import { EnvironmentService as EnvironmentServiceAbstraction } from "@bitwarden/common/abstractions/environment.service";
 import { EventUploadService as EventUploadServiceAbstraction } from "@bitwarden/common/abstractions/event/event-upload.service";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/abstractions/i18n.service";
 import { NotificationsService as NotificationsServiceAbstraction } from "@bitwarden/common/abstractions/notifications.service";
@@ -46,8 +43,8 @@ export class InitService {
       //
       // We want to get to just `https://vaultwarden.example.com/base/path`.
       let baseUrl = window.location.href;
-      baseUrl = baseUrl.replace(/#.*/, '');  // Strip off `#` and everything after.
-      baseUrl = baseUrl.replace(/\/+$/, ''); // Trim any trailing `/` chars.
+      baseUrl = baseUrl.replace(/#.*/, ""); // Strip off `#` and everything after.
+      baseUrl = baseUrl.replace(/\/+$/, ""); // Trim any trailing `/` chars.
       return baseUrl;
     }
     return async () => {
@@ -56,7 +53,7 @@ export class InitService {
       this.environmentService.initialized = false;
       await this.stateService.init();
 
-      const urls = {base: getBaseUrl()};
+      const urls = { base: getBaseUrl() };
       this.environmentService.setUrls(urls);
       this.environmentService.initialized = true;
 
