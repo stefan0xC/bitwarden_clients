@@ -183,9 +183,9 @@ export class AppComponent implements OnDestroy, OnInit {
             break;
           }
           case "showToast":
-            if (typeof message.text === "string" && typeof crypto.subtle === 'undefined') {
-              message.title="This browser requires HTTPS to use the web vault";
-              message.text="Check the Vaultwarden wiki for details on how to enable it";
+            if (typeof message.text === "string" && typeof crypto.subtle === "undefined") {
+              message.title = "This browser requires HTTPS to use the web vault";
+              message.text = "Check the Vaultwarden wiki for details on how to enable it";
             }
             this.showToast(message);
             break;

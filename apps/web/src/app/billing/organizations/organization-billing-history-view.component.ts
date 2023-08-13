@@ -45,7 +45,7 @@ export class OrgBillingHistoryViewComponent implements OnInit, OnDestroy {
       return;
     }
     this.loading = true;
-    this.billing = null
+    this.billing = null;
     this.loading = false;
   }
 }
