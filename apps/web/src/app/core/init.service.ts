@@ -37,14 +37,26 @@ export class InitService {
   ) {}
 
   init() {
+    function getBaseUrl() {
+      // If the base URL is `https://vaultwarden.example.com/base/path/`,
+      // `window.location.href` should have one of the following forms:
+      //
+      // - `https://vaultwarden.example.com/base/path/`
+      // - `https://vaultwarden.example.com/base/path/#/some/route[?queryParam=...]`
+      //
+      // We want to get to just `https://vaultwarden.example.com/base/path`.
+      let baseUrl = window.location.href;
+      baseUrl = baseUrl.replace(/#.*/, '');  // Strip off `#` and everything after.
+      baseUrl = baseUrl.replace(/\/+$/, ''); // Trim any trailing `/` chars.
+      return baseUrl;
+    }
     return async () => {
       // Workaround to ignore stateService.activeAccount until process.env.URLS are set
       // TODO: Remove this when implementing ticket PM-2637
       this.environmentService.initialized = false;
       await this.stateService.init();
 
-      const urls = process.env.URLS as Urls;
-      urls.base ??= this.win.location.origin;
+      const urls = {base: getBaseUrl()};
       this.environmentService.setUrls(urls);
       this.environmentService.initialized = true;
 

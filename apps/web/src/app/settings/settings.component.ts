@@ -55,10 +55,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.hasFamilySponsorshipAvailable = await this.organizationService.canManageSponsorships();
     const hasPremiumFromOrg = await this.stateService.getHasPremiumFromOrganization();
     let billing = null;
-    if (!this.selfHosted) {
-      billing = await this.apiService.getUserBillingHistory();
-    }
-    this.hideSubscription =
-      !this.premium && hasPremiumFromOrg && (this.selfHosted || billing?.hasNoHistory);
+    this.hideSubscription = true;
   }
 }

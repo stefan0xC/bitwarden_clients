@@ -179,11 +179,7 @@ export class VaultComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.showBrowserOutdated = window.navigator.userAgent.indexOf("MSIE") !== -1;
-    this.trashCleanupWarning = this.i18nService.t(
-      this.platformUtilsService.isSelfHost()
-        ? "trashCleanupWarningSelfHosted"
-        : "trashCleanupWarning"
-    );
+    this.trashCleanupWarning =this.i18nService.t("trashCleanupWarningSelfHosted");
 
     const firstSetup$ = this.route.queryParams.pipe(
       first(),

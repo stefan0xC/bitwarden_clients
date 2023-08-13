@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 <div class="container my-5 text-muted text-center">
-  <div class="tw-mb-1" *ngIf="!isSelfHosted">
+  <div class="tw-mb-1" *ngIf="false">
     <bit-menu #environmentOptions>
       <a bitMenuItem href="https://vault.bitwarden.com" class="pr-4">
         <i
@@ -29,6 +29,7 @@
     <br />
   </div>
 
-  &copy; {{ year }} Bitwarden Inc. <br />
+  Vaultwarden (unofficial Bitwarden&reg; server)<br />
+  ({{ "webVault" | i18n }})
   {{ "versionNumber" | i18n : version }}
 </div>

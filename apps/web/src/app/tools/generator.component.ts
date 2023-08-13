@@ -37,7 +37,7 @@ export class GeneratorComponent extends BaseGeneratorComponent {
       route,
       window
     );
-    if (platformUtilsService.isSelfHost()) {
+    if (true) {
       // Allow only valid email forwarders for self host
       this.forwardOptions = this.forwardOptions.filter((forwarder) => forwarder.validForSelfHosted);
     }

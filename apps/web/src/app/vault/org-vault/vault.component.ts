@@ -166,11 +166,7 @@ export class VaultComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    this.trashCleanupWarning = this.i18nService.t(
-      this.platformUtilsService.isSelfHost()
-        ? "trashCleanupWarningSelfHosted"
-        : "trashCleanupWarning"
-    );
+    this.trashCleanupWarning = this.i18nService.t("trashCleanupWarningSelfHosted");
 
     const filter$ = this.routedVaultFilterService.filter$;
     const organizationId$ = filter$.pipe(
