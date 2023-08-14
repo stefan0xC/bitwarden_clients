@@ -8,10 +8,7 @@ import { VaultTimeoutService as VaultTimeoutServiceAbstraction } from "@bitwarde
 import { TwoFactorService as TwoFactorServiceAbstraction } from "@bitwarden/common/auth/abstractions/two-factor.service";
 import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
-import {
-  EnvironmentService as EnvironmentServiceAbstraction,
-  Urls,
-} from "@bitwarden/common/platform/abstractions/environment.service";
+import { EnvironmentService as EnvironmentServiceAbstraction } from "@bitwarden/common/platform/abstractions/environment.service";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { StateService as StateServiceAbstraction } from "@bitwarden/common/platform/abstractions/state.service";
 import { ContainerService } from "@bitwarden/common/platform/services/container.service";
@@ -37,11 +34,23 @@ export class InitService {
   ) {}
 
   init() {
+    function getBaseUrl() {
+      // If the base URL is `https://vaultwarden.example.com/base/path/`,
+      // `window.location.href` should have one of the following forms:
+      //
+      // - `https://vaultwarden.example.com/base/path/`
+      // - `https://vaultwarden.example.com/base/path/#/some/route[?queryParam=...]`
+      //
+      // We want to get to just `https://vaultwarden.example.com/base/path`.
+      let baseUrl = window.location.href;
+      baseUrl = baseUrl.replace(/#.*/, ""); // Strip off `#` and everything after.
+      baseUrl = baseUrl.replace(/\/+$/, ""); // Trim any trailing `/` chars.
+      return baseUrl;
+    }
     return async () => {
       await this.stateService.init();
 
-      const urls = process.env.URLS as Urls;
-      urls.base ??= this.win.location.origin;
+      const urls = { base: getBaseUrl() };
       await this.environmentService.setUrls(urls);
       // Workaround to ignore stateService.activeAccount until process.env.URLS are set
       // TODO: Remove this when implementing ticket PM-2637
