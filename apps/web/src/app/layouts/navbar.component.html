@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark" [ngClass]="{ 'nav-background-alt': selfHosted }">
   <div class="container">
-    <a class="navbar-brand" routerLink="/" appA11yTitle="{{ 'bitWebVault' | i18n }}">
+    <a class="navbar-brand" routerLink="/" appA11yTitle="Vaultwarden Web">
       <i class="bwi bwi-shield" aria-hidden="true"></i>
     </a>
     <div class="collapse navbar-collapse">
@@ -75,7 +75,12 @@
               <i class="bwi bwi-fw bwi-user" aria-hidden="true"></i>
               {{ "accountSettings" | i18n }}
             </a>
-            <a bitMenuItem href="https://bitwarden.com/help/" target="_blank" rel="noopener">
+            <a
+              bitMenuItem
+              href="https://github.com/dani-garcia/vaultwarden/"
+              target="_blank"
+              rel="noopener"
+            >
               <i class="bwi bwi-fw bwi-question-circle" aria-hidden="true"></i>
               {{ "getHelp" | i18n }}
             </a>
