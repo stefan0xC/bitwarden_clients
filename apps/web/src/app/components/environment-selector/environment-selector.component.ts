@@ -30,7 +30,7 @@ export class EnvironmentSelectorComponent implements OnInit {
     this.isEuServer = domain.includes(RegionDomain.EU);
     this.isUsServer = domain.includes(RegionDomain.US) || domain.includes(RegionDomain.USQA);
     this.selectedRegionImageName = this.getRegionImage();
-    this.showRegionSelector = !this.platformUtilsService.isSelfHost();
+    this.showRegionSelector = false;
   }
 
   getRegionImage(): string {
