@@ -141,8 +141,6 @@ const plugins = [
       { from: "./src/favicon.ico" },
       { from: "./src/browserconfig.xml" },
       { from: "./src/app-id.json" },
-      { from: "./src/404.html" },
-      { from: "./src/404", to: "404" },
       { from: "./src/images", to: "images" },
       { from: "./src/locales", to: "locales" },
       { from: "../../node_modules/qrious/dist/qrious.min.js", to: "scripts" },
