@@ -37,7 +37,7 @@ export class RegisterComponent extends CaptchaProtectedComponent implements OnIn
   showPassword = false;
   formPromise: Promise<RegisterResponse>;
   referenceData: ReferenceEventRequest;
-  showTerms = true;
+  showTerms = false;
   showErrorSummary = false;
   passwordStrengthResult: any;
   characterMinimumMessage: string;
@@ -95,7 +95,7 @@ export class RegisterComponent extends CaptchaProtectedComponent implements OnIn
     protected dialogService: DialogService
   ) {
     super(environmentService, i18nService, platformUtilsService);
-    this.showTerms = !platformUtilsService.isSelfHost();
+    this.showTerms = false;
     this.characterMinimumMessage = this.i18nService.t("characterMinimum", this.minimumLength);
   }
 
@@ -104,6 +104,14 @@ export class RegisterComponent extends CaptchaProtectedComponent implements OnIn
   }
 
   async submit(showToast = true) {
+    if (typeof crypto.subtle === "undefined") {
+      this.platformUtilsService.showToast(
+        "error",
+        "This browser requires HTTPS to use the web vault",
+        "Check the Vaultwarden wiki for details on how to enable it"
+      );
+      return;
+    }
     let email = this.formGroup.value.email;
     email = email.trim().toLowerCase();
     let name = this.formGroup.value.name;
