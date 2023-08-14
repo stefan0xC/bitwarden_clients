@@ -57,3 +57,16 @@
 @import "./tables";
 @import "./toasts";
 @import "./vault-filters";
+
+/**** START Vaultwarden CHANGES ****/
+/* Replace the Bitwarden Shield at the top left with a Vaultwarden icon */
+.bwi-shield:before {
+  content: "" !important;
+  width: 32px !important;
+  height: 40px !important;
+  display: block !important;
+  background-image: url(../images/icon-white.png) !important;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+}
+/**** END Vaultwarden CHANGES ****/
