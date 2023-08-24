@@ -17,11 +17,12 @@
     "strictTemplates": true,
     "preserveWhitespaces": true
   },
-  "files": ["src/polyfills.ts", "src/main.ts", "../../bitwarden_license/bit-web/src/main.ts"],
+  "files": ["src/polyfills.ts", "src/main.ts"],
   "include": [
     "src/connectors/*.ts",
     "src/**/*.stories.ts",
     "src/**/*.spec.ts",
     "../../libs/common/src/platform/services/**/*.worker.ts"
-  ]
+  ],
+  "exclude": ["apps/web/src/app/billing/organizations/secrets-manager/*.ts"]
 }
