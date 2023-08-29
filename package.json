@@ -29,8 +29,7 @@
     "postinstall": "patch-package"
   },
   "workspaces": [
-    "apps/*",
-    "apps/desktop/desktop_native",
+    "apps/web",
     "libs/*"
   ],
   "devDependencies": {
