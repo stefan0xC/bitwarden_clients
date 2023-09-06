@@ -164,7 +164,7 @@ const safeProviders: SafeProvider[] = [
     provide: ThemeStateService,
     useFactory: (globalStateProvider: GlobalStateProvider) =>
       // Web chooses to have Light as the default theme
-      new DefaultThemeStateService(globalStateProvider, ThemeType.Light),
+      new DefaultThemeStateService(globalStateProvider, ThemeType.System),
     deps: [GlobalStateProvider],
   }),
   safeProvider({

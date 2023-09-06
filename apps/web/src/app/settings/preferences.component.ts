@@ -45,7 +45,7 @@ export class PreferencesComponent implements OnInit {
     vaultTimeout: [null as VaultTimeout | null],
     vaultTimeoutAction: [VaultTimeoutAction.Lock],
     enableFavicons: true,
-    theme: [ThemeType.Light],
+    theme: [ThemeType.System],
     locale: [null as string | null],
   });
 
