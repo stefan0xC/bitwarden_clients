@@ -43,7 +43,7 @@ export class PreferencesComponent implements OnInit {
     vaultTimeoutAction: [VaultTimeoutAction.Lock],
     enableFavicons: true,
     enableFullWidth: false,
-    theme: [ThemeType.Light],
+    theme: [ThemeType.System],
     locale: [null as string | null],
   });
 
