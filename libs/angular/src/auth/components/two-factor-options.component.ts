@@ -30,7 +30,9 @@ export class TwoFactorOptionsComponent implements OnInit {
   }
 
   recover() {
-    this.platformUtilsService.launchUri("https://vault.bitwarden.com/#/recover-2fa");
+    this.platformUtilsService.launchUri(
+      "https://bitwarden.com/help/two-step-recovery-code/#use-your-recovery-code",
+    );
     this.onRecoverSelected.emit();
   }
 }
