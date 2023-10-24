@@ -23,7 +23,6 @@
     <div class="tw-ml-auto tw-flex tw-flex-col tw-gap-4">
       <div class="tw-flex tw-min-w-max tw-items-center tw-justify-end tw-gap-2">
         <ng-content></ng-content>
-        <product-switcher></product-switcher>
         <ng-container *ngIf="account$ | async as account">
           <button
             type="button"
