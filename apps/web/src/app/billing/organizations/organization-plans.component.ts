@@ -153,10 +153,11 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     if (this.organizationId) {
       this.organization = this.organizationService.get(this.organizationId);
-      this.billing = await this.organizationApiService.getBilling(this.organizationId);
+      // this.billing = await this.organizationApiService.getBilling(this.organizationId);
       this.sub = await this.organizationApiService.getSubscription(this.organizationId);
     }
 
+    /*
     if (!this.selfHosted) {
       const plans = await this.apiService.getPlans();
       this.passwordManagerPlans = plans.data.filter((plan) => !!plan.PasswordManager);
@@ -188,6 +189,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
       this.plan = providerDefaultPlan.type;
       this.product = providerDefaultPlan.product;
     }
+    */
 
     if (!this.createOrganization) {
       this.upgradeFlowPrefillForm();
@@ -256,6 +258,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   get selectableProducts() {
+    return null;
     if (this.acceptingSponsorship) {
       const familyPlan = this.passwordManagerPlans.find(
         (plan) => plan.type === PlanType.FamiliesAnnually,
@@ -286,6 +289,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   get selectablePlans() {
+    return null;
     const selectedProductType = this.formGroup.controls.product.value;
     const result = this.passwordManagerPlans?.filter(
       (plan) =>
@@ -425,10 +429,11 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   get planOffersSecretsManager() {
-    return this.selectedSecretsManagerPlan != null;
+    return false;
   }
 
   changedProduct() {
+    return;
     const selectedPlan = this.selectablePlans[0];
 
     this.setPlanType(selectedPlan.type);
@@ -639,7 +644,9 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
     request.name = this.formGroup.controls.name.value;
     request.billingEmail = this.formGroup.controls.billingEmail.value;
     request.keys = new OrganizationKeysRequest(orgKeys[0], orgKeys[1].encryptedString);
+    request.planType = PlanType.Free;
 
+    /*
     if (this.selectedPlan.type === PlanType.Free) {
       request.planType = PlanType.Free;
     } else {
@@ -669,6 +676,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
 
     // Secrets Manager
     this.buildSecretsManagerRequest(request);
+    */
 
     if (this.hasProvider) {
       const providerRequest = new ProviderOrganizationCreateRequest(
