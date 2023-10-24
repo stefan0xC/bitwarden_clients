@@ -140,6 +140,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    /*
     if (!this.selfHosted) {
       const plans = await this.apiService.getPlans();
       this.passwordManagerPlans = plans.data.filter((plan) => !!plan.PasswordManager);
@@ -149,6 +150,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
         this.formGroup.controls.businessOwned.setValue(true);
       }
     }
+    */
 
     if (this.hasProvider) {
       this.formGroup.controls.businessOwned.setValue(true);
@@ -215,6 +217,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   get selectableProducts() {
+    return null;
     if (this.acceptingSponsorship) {
       const familyPlan = this.passwordManagerPlans.find(
         (plan) => plan.type === PlanType.FamiliesAnnually
@@ -386,7 +389,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   get planOffersSecretsManager() {
-    return this.selectedSecretsManagerPlan != null;
+    return false;
   }
 
   changedProduct() {
@@ -563,7 +566,9 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
     request.name = this.formGroup.controls.name.value;
     request.billingEmail = this.formGroup.controls.billingEmail.value;
     request.keys = new OrganizationKeysRequest(orgKeys[0], orgKeys[1].encryptedString);
+    request.planType = PlanType.Free;
 
+    /*
     if (this.selectedPlan.type === PlanType.Free) {
       request.planType = PlanType.Free;
     } else {
@@ -593,7 +598,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
 
     // Secrets Manager
     this.buildSecretsManagerRequest(request);
-
+    */
     if (this.hasProvider) {
       const providerRequest = new ProviderOrganizationCreateRequest(
         this.formGroup.controls.clientOwnerEmail.value,
