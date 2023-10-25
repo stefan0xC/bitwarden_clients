@@ -27,12 +27,7 @@
         <bit-radio-group formControlName="type">
           <bit-label>{{ "whatTypeOfSend" | i18n }}</bit-label>
 
-          <bit-radio-button
-            *ngFor="let o of typeOptions"
-            id="type_{{ o.value }}"
-            class="tw-block"
-            [value]="o.value"
-          >
+          <bit-radio-button *ngFor="let o of typeOptions" id="type_{{ o.value }}" [value]="o.value">
             <bit-label>{{ o.name }}</bit-label>
           </bit-radio-button>
         </bit-radio-group>
