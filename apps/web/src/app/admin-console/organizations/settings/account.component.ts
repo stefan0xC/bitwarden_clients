@@ -120,14 +120,14 @@ export class AccountComponent {
         this.canUseApi = organization.useApi;
 
         // Update disabled states - reactive forms prefers not using disabled attribute
-        if (!this.selfHosted) {
+        if (this.selfHosted) {
           this.formGroup.get("orgName").enable();
           this.formGroup.get("businessName").enable();
           this.collectionManagementFormGroup.get("limitCollectionCreationDeletion").enable();
           this.collectionManagementFormGroup.get("allowAdminAccessToAllCollectionItems").enable();
         }
 
-        if (!this.selfHosted && this.canEditSubscription) {
+        if (this.selfHosted && this.canEditSubscription) {
           this.formGroup.get("billingEmail").enable();
         }
 
@@ -183,7 +183,7 @@ export class AccountComponent {
 
   submitCollectionManagement = async () => {
     // Early exit if self-hosted
-    if (this.selfHosted) {
+    if (!this.selfHosted) {
       return;
     }
 
