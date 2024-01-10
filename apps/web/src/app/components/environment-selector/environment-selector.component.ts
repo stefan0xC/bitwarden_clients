@@ -24,7 +24,7 @@ export class EnvironmentSelectorComponent implements OnInit {
     const domain = Utils.getDomain(window.location.href);
     this.isEuServer = domain.includes(RegionDomain.EU);
     this.isUsServer = domain.includes(RegionDomain.US) || domain.includes(RegionDomain.USQA);
-    this.showRegionSelector = !this.platformUtilsService.isSelfHost();
+    this.showRegionSelector = false;
     this.routeAndParams = `/#${this.router.url}`;
   }
 }
