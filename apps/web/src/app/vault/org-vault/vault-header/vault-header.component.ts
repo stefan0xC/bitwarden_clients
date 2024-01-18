@@ -160,7 +160,7 @@ export class VaultHeaderComponent {
   }
 
   async addCollection() {
-    if (this.organization.planProductType !== ProductType.Free) {
+    if (this.organization.planProductType === ProductType.Free) {
       const collections = await this.collectionAdminService.getAll(this.organization.id);
       if (collections.length === this.organization.maxCollections) {
         this.showFreeOrgUpgradeDialog();
