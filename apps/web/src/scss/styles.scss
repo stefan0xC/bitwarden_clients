@@ -75,6 +75,11 @@ a[href$="/settings/sponsored-families"] {
   @extend %vw-hide;
 }
 
+/* Hide the `Enterprise Single Sign-On` button on the login page */
+a[routerlink="/sso"] {
+  @extend %vw-hide;
+}
+
 /* Hide Business Owned checkbox */
 app-org-info > form:nth-child(1) > div:nth-child(3) {
   @extend %vw-hide;
