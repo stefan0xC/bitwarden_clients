@@ -79,6 +79,11 @@ a[href$="/settings/sponsored-families"] {
   @extend %vw-hide;
 }
 
+/* Hide the `Enterprise Single Sign-On` button on the login page */
+a[routerlink="/sso"] {
+  @extend %vw-hide;
+}
+
 /* Hide Two-Factor menu in Organization settings */
 app-org-settings a[href$="/settings/two-factor"] {
   @extend %vw-hide;
