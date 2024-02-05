@@ -568,11 +568,8 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
         const collectionCt = collection.encryptedString;
         const orgKeys = await this.cryptoService.makeKeyPair(orgKey[1]);
 
-        if (this.selfHosted) {
-          orgId = await this.createSelfHosted(key, collectionCt, orgKeys);
-        } else {
-          orgId = await this.createCloudHosted(key, collectionCt, orgKeys, orgKey[1]);
-        }
+        // always use createCloudHosted() to disable license file upload
+        orgId = await this.createCloudHosted(key, collectionCt, orgKeys, orgKey[1]);
 
         this.platformUtilsService.showToast(
           "success",
