@@ -105,6 +105,7 @@ export class OrganizationLayoutComponent implements OnInit, OnDestroy {
   }
 
   canShowBillingTab(organization: Organization): boolean {
+    return false; // disable billing tab in Vaultwarden
     return canAccessBillingTab(organization);
   }
 
