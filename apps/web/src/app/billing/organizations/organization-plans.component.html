@@ -28,7 +28,7 @@
   (ngSubmit)="submit()"
   [appApiAction]="formPromise"
   ngNativeValidate
-  *ngIf="!loading && !selfHosted && this.passwordManagerPlans && this.secretsManagerPlans"
+  *ngIf="!loading"
   class="tw-pt-6"
 >
   <app-org-info
