@@ -6,7 +6,7 @@
   ></i>
   <span class="sr-only">{{ "loading" | i18n }}</span>
 </ng-container>
-<ng-container *ngIf="createOrganization && selfHosted">
+<ng-container *ngIf="createOrganization && false">
   <p>{{ "uploadLicenseFileOrg" | i18n }}</p>
   <form #form (ngSubmit)="submit()" [appApiAction]="formPromise" ngNativeValidate>
     <div class="form-group">
