@@ -209,6 +209,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   };
 
   submitCollectionManagement = async () => {
+    return; // flexible collections are not supported by Vaultwarden
     // Early exit if self-hosted
     if (this.selfHosted && !this.limitCollectionCreationDeletionSplitFeatureFlagIsEnabled) {
       return;
