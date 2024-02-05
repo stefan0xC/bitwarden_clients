@@ -99,7 +99,7 @@ export class AccountComponent {
   ) {}
 
   async ngOnInit() {
-    this.selfHosted = this.platformUtilsService.isSelfHost();
+    this.selfHosted = false; // set to false so we can rename organizations
 
     this.route.params
       .pipe(
