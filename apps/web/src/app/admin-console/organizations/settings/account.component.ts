@@ -204,6 +204,7 @@ export class AccountComponent {
   }
 
   submitCollectionManagement = async () => {
+    return; // flexible collections are not supported by Vaultwarden
     // Early exit if self-hosted
     if (this.selfHosted) {
       return;
