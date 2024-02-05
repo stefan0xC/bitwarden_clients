@@ -548,7 +548,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
           const orgKeys = await this.cryptoService.makeKeyPair(orgKey[1]);
 
           if (this.selfHosted) {
-            orgId = await this.createSelfHosted(key, collectionCt, orgKeys);
+            orgId = await this.createCloudHosted(key, collectionCt, orgKeys, orgKey[1]);
           } else {
             orgId = await this.createCloudHosted(key, collectionCt, orgKeys, orgKey[1]);
           }
