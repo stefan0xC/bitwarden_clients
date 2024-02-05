@@ -6,7 +6,7 @@
   ></i>
   <span class="tw-sr-only">{{ "loading" | i18n }}</span>
 </ng-container>
-<ng-container *ngIf="createOrganization && selfHosted">
+<ng-container *ngIf="createOrganization && false">
   <p bitTypography="body1">{{ "uploadLicenseFileOrg" | i18n }}</p>
   <form [formGroup]="selfHostedForm" [bitSubmit]="submit">
     <bit-form-field>
