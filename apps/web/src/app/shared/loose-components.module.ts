@@ -59,7 +59,6 @@ import { UpdateTempPasswordComponent } from "../auth/update-temp-password.compon
 import { VerifyEmailTokenComponent } from "../auth/verify-email-token.component";
 import { VerifyRecoverDeleteComponent } from "../auth/verify-recover-delete.component";
 import { DynamicAvatarComponent } from "../components/dynamic-avatar.component";
-import { PaymentMethodBannersComponent } from "../components/payment-method-banners/payment-method-banners.component";
 import { SelectableAvatarComponent } from "../components/selectable-avatar.component";
 import { FrontendLayoutComponent } from "../layouts/frontend-layout.component";
 import { HeaderModule } from "../layouts/header/header.module";
@@ -106,7 +105,6 @@ import { SharedModule } from "./shared.module";
     PipesModule,
     PasswordCalloutComponent,
     DangerZoneComponent,
-    PaymentMethodBannersComponent,
     LayoutComponent,
     NavigationModule,
     HeaderModule,
