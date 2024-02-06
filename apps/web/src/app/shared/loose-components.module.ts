@@ -58,7 +58,6 @@ import { UpdatePasswordComponent } from "../auth/update-password.component";
 import { UpdateTempPasswordComponent } from "../auth/update-temp-password.component";
 import { VerifyEmailTokenComponent } from "../auth/verify-email-token.component";
 import { VerifyRecoverDeleteComponent } from "../auth/verify-recover-delete.component";
-import { PaymentMethodWarningsModule } from "../billing/shared";
 import { DynamicAvatarComponent } from "../components/dynamic-avatar.component";
 import { SelectableAvatarComponent } from "../components/selectable-avatar.component";
 import { FrontendLayoutComponent } from "../layouts/frontend-layout.component";
@@ -111,7 +110,6 @@ import { SharedModule } from "./shared.module";
     HeaderModule,
     OrganizationLayoutComponent,
     UserLayoutComponent,
-    PaymentMethodWarningsModule,
   ],
   declarations: [
     AcceptFamilySponsorshipComponent,
