@@ -13,8 +13,6 @@ import { PlatformUtilsService } from "@bitwarden/common/platform/abstractions/pl
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { IconModule, LayoutComponent, NavigationModule } from "@bitwarden/components";
 
-import { PaymentMethodWarningsModule } from "../billing/shared";
-
 import { PasswordManagerLogo } from "./password-manager-logo";
 import { ProductSwitcherModule } from "./product-switcher/product-switcher.module";
 import { ToggleWidthComponent } from "./toggle-width.component";
@@ -30,7 +28,6 @@ import { ToggleWidthComponent } from "./toggle-width.component";
     LayoutComponent,
     IconModule,
     NavigationModule,
-    PaymentMethodWarningsModule,
     ToggleWidthComponent,
     ProductSwitcherModule,
   ],
