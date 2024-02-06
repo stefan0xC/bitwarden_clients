@@ -4,7 +4,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { NavigationEnd, Router } from "@angular/router";
 import * as jq from "jquery";
 import { IndividualConfig, ToastrService } from "ngx-toastr";
-import { Subject, switchMap, takeUntil, timer } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 
 import { EventUploadService } from "@bitwarden/common/abstractions/event/event-upload.service";
 import { NotificationsService } from "@bitwarden/common/abstractions/notifications.service";
@@ -14,7 +14,6 @@ import { InternalOrganizationServiceAbstraction } from "@bitwarden/common/admin-
 import { InternalPolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { KeyConnectorService } from "@bitwarden/common/auth/abstractions/key-connector.service";
-import { PaymentMethodWarningsServiceAbstraction as PaymentMethodWarningService } from "@bitwarden/common/billing/abstractions/payment-method-warnings-service.abstraction";
 import { BroadcasterService } from "@bitwarden/common/platform/abstractions/broadcaster.service";
 import { ConfigServiceAbstraction } from "@bitwarden/common/platform/abstractions/config/config.service.abstraction";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
@@ -46,7 +45,6 @@ import {
 
 const BroadcasterSubscriptionId = "AppComponent";
 const IdleTimeout = 60000 * 10; // 10 minutes
-const PaymentMethodWarningsRefresh = 60000; // 1 Minute
 
 @Component({
   selector: "app-root",
@@ -57,7 +55,6 @@ export class AppComponent implements OnDestroy, OnInit {
   private idleTimer: number = null;
   private isIdle = false;
   private destroy$ = new Subject<void>();
-  private paymentMethodWarningsRefresh$ = timer(0, PaymentMethodWarningsRefresh);
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -87,7 +84,6 @@ export class AppComponent implements OnDestroy, OnInit {
     private dialogService: DialogService,
     private biometricStateService: BiometricStateService,
     private stateEventRunnerService: StateEventRunnerService,
-    private paymentMethodWarningService: PaymentMethodWarningService,
     private organizationService: InternalOrganizationServiceAbstraction,
   ) {}
 
@@ -246,21 +242,6 @@ export class AppComponent implements OnDestroy, OnInit {
       new DisableSendPolicy(),
       new SendOptionsPolicy(),
     ]);
-
-    this.paymentMethodWarningsRefresh$
-      .pipe(
-        switchMap(() => this.organizationService.memberOrganizations$),
-        switchMap(
-          async (organizations) =>
-            await Promise.all(
-              organizations.map((organization) =>
-                this.paymentMethodWarningService.update(organization.id),
-              ),
-            ),
-        ),
-        takeUntil(this.destroy$),
-      )
-      .subscribe();
   }
 
   ngOnDestroy() {
@@ -282,7 +263,6 @@ export class AppComponent implements OnDestroy, OnInit {
       this.passwordGenerationService.clear(),
       this.keyConnectorService.clear(),
       this.biometricStateService.logout(userId as UserId),
-      this.paymentMethodWarningService.clear(),
     ]);
 
     await this.stateEventRunnerService.handleEvent("logout", userId as UserId);
