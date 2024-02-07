@@ -763,6 +763,7 @@ export class OrganizationPlansComponent implements OnInit, OnDestroy {
   }
 
   private upgradeFlowPrefillForm() {
+    return; // Vaultwarden only supports free plan
     if (this.acceptingSponsorship) {
       this.formGroup.controls.product.setValue(ProductType.Families);
       this.changedProduct();
