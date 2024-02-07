@@ -68,13 +68,6 @@ const routes: Routes = [
             (m) => m.OrganizationReportingModule,
           ),
       },
-      {
-        path: "billing",
-        loadChildren: () =>
-          import("../../billing/organizations/organization-billing.module").then(
-            (m) => m.OrganizationBillingModule,
-          ),
-      },
     ],
   },
 ];
