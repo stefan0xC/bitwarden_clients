@@ -74,6 +74,12 @@ head {
 bit-tab-link[route="billing"] {
   @extend %vw-hide;
 }
+
+/* Hide any link pointing to Free Bitwarden Families */
+a[href$="/settings/sponsored-families"] {
+  @extend %vw-hide;
+}
+
 /* Hide Business Owned checkbox */
 app-org-info > form:nth-child(1) > div:nth-child(3) {
   @extend %vw-hide;
