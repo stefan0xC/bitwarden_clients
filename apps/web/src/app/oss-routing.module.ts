@@ -223,13 +223,6 @@ const routes: Routes = [
             data: { titleId: "domainRules" },
           },
           {
-            path: "subscription",
-            loadChildren: () =>
-              import("./billing/individual/individual-billing.module").then(
-                (m) => m.IndividualBillingModule,
-              ),
-          },
-          {
             path: "emergency-access",
             children: [
               {
