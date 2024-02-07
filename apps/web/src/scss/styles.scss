@@ -84,6 +84,12 @@ label[for^="ownedBusiness"] {
   @extend %vw-hide;
 }
 
+/* Hide the radio button and label for the `Custom` org user type */
+#userTypeCustom,
+label[for^="userTypeCustom"] {
+  @extend %vw-hide;
+}
+
 /* Hide Business Name */
 app-org-account form div bit-form-field.tw-block:nth-child(3) {
   @extend %vw-hide;
