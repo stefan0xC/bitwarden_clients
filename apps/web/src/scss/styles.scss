@@ -100,6 +100,11 @@ app-organization-plans > form > h2.mt-5 {
   @extend %vw-hide;
 }
 
+/* Hide Device Verification form at the Two Step Login screen */
+app-security > app-two-factor-setup > form {
+  @extend %vw-hide;
+}
+
 /* Replace the Bitwarden Shield at the top left with a Vaultwarden icon */
 .bwi-shield:before {
   content: "" !important;
