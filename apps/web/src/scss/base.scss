@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  position: relative;
   min-width: 1010px;
 
   &.layout_frontend {
