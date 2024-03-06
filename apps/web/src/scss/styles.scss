@@ -69,8 +69,8 @@ head {
   @extend %vw-hide;
 }
 
-/* Hide the Billing Page tab */
-bit-tab-link[route="billing"] {
+/* Hide the Subscription Page tab */
+bit-nav-item[route="settings/subscription"] {
   @extend %vw-hide;
 }
 
