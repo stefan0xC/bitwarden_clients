@@ -64,7 +64,7 @@
 }
 
 /* This allows searching for the combined style in the browsers dev-tools (look into the head tag) */
-#vw-hide,
+.vw-hide,
 head {
   @extend %vw-hide;
 }
