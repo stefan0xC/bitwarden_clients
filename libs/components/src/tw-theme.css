@@ -1,9 +1,9 @@
 @import "./reset.css";
 
-/** 
-  Note that the value of the *-600 colors is currently equivalent to the value 
+/**
+  Note that the value of the *-600 colors is currently equivalent to the value
   of the *-500 variant of that color. This is a temporary change to make BW-42
-  updates easier. 
+  updates easier.
 
   TODO remove comment when the color palette portion of BW-42 is completed.
 */
@@ -14,12 +14,12 @@
   --color-background: 255 255 255;
   --color-background-alt: 251 251 251;
   --color-background-alt2: 23 92 219;
-  --color-background-alt3: 18 82 163;
-  --color-background-alt4: 13 60 119;
+  --color-background-alt3: 33 37 41; /* bg of menu panel */
+  --color-background-alt4: 16 18 21; /* bg of active menu item */
 
-  --color-primary-300: 103 149 232;
-  --color-primary-600: 23 93 220;
-  --color-primary-700: 18 82 163;
+  --color-primary-300: 108 117 125; /* hover of menu items */
+  --color-primary-600: 18 82 163; /* color of links and buttons */
+  --color-primary-700: 13 60 119; /* hover of links and buttons */
 
   --color-secondary-100: 240 240 240;
   --color-secondary-300: 206 212 220;
@@ -171,7 +171,7 @@
 @import "./popover/popover.component.css";
 @import "./search/search.component.css";
 
-/** 
+/**
  * tw-break-words does not work with table cells:
  * https://github.com/tailwindlabs/tailwindcss/issues/835
  */
@@ -179,7 +179,7 @@ td.tw-break-words {
   overflow-wrap: anywhere;
 }
 
-/** 
+/**
  * tw-list-none hides summary arrow in Firefox & Chrome but not Safari:
  * https://github.com/tailwindlabs/tailwindcss/issues/924#issuecomment-915509785
  */
@@ -188,7 +188,7 @@ summary.tw-list-none::-webkit-details-marker {
   display: none;
 }
 
-/** 
+/**
  * Arbitrary values can't be used with `text-align`:
  * https://github.com/tailwindlabs/tailwindcss/issues/802#issuecomment-849013311
  */
