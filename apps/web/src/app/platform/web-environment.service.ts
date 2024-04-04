@@ -27,8 +27,17 @@ export class WebEnvironmentService extends DefaultEnvironmentService {
     super(stateProvider, accountService);
 
     // The web vault always uses the current location as the base url
-    const urls = process.env.URLS as Urls;
-    urls.base ??= this.win.location.origin;
+    // If the base URL is `https://vaultwarden.example.com/base/path/`,
+    // `window.location.href` should have one of the following forms:
+    //
+    // - `https://vaultwarden.example.com/base/path/`
+    // - `https://vaultwarden.example.com/base/path/#/some/route[?queryParam=...]`
+    //
+    // We want to get to just `https://vaultwarden.example.com/base/path`.
+    let baseUrl = this.win.location.href;
+    baseUrl = baseUrl.replace(/#.*/, ""); // Strip off `#` and everything after.
+    baseUrl = baseUrl.replace(/\/+$/, ""); // Trim any trailing `/` chars.
+    const urls = { base: baseUrl };
 
     // Find the region
     const domain = Utils.getDomain(this.win.location.href);
