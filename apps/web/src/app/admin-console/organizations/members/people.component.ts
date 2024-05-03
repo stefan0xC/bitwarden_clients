@@ -189,11 +189,7 @@ export class PeopleComponent extends BasePeopleComponent<OrganizationUserView> {
             .find((p) => p.organizationId === this.organization.id);
           this.orgResetPasswordPolicyEnabled = resetPasswordPolicy?.enabled;
 
-          const billingMetadata = await this.billingApiService.getOrganizationBillingMetadata(
-            this.organization.id,
-          );
-
-          this.orgIsOnSecretsManagerStandalone = billingMetadata.isOnSecretsManagerStandalone;
+          this.orgIsOnSecretsManagerStandalone = false; // don't get billing metadata
 
           await this.load();
 
