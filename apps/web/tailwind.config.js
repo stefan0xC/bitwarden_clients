@@ -6,7 +6,6 @@ config.content = [
   "../../libs/components/src/**/*.{html,ts}",
   "../../libs/auth/src/**/*.{html,ts}",
   "../../libs/angular/src/**/*.{html,ts}",
-  "../../bitwarden_license/bit-web/src/**/*.{html,ts}",
 ];
 
 module.exports = config;
