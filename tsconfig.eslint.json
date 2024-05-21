@@ -35,6 +35,6 @@
       }
     ]
   },
-  "include": ["apps/**/*", "libs/**/*", "bitwarden_license/**/*"],
+  "include": ["apps/**/*", "libs/**/*"],
   "exclude": ["**/build"]
 }

@@ -38,12 +38,7 @@
     ],
     "useDefineForClassFields": false
   },
-  "include": [
-    "apps/web/src/**/*",
-    "apps/browser/src/**/*",
-    "libs/*/src/**/*",
-    "bitwarden_license/bit-web/src/**/*"
-  ],
+  "include": ["apps/web/src/**/*", "apps/browser/src/**/*", "libs/*/src/**/*"],
   "exclude": [
     "apps/web/src/**/*.spec.ts",
     "apps/browser/src/**/*.spec.ts",
