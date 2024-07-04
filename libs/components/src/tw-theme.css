@@ -47,7 +47,7 @@
   --color-text-contrast: 255 255 255;
   --color-text-alt2: 255 255 255;
   --color-text-code: 192 17 118;
-  --color-text-headers: 2 15 102;
+  --color-text-headers: 15 15 15; /* used for vaultwarden logo */
 
   --tw-ring-offset-color: #ffffff;
 }
