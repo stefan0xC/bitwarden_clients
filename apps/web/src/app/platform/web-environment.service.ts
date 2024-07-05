@@ -32,11 +32,11 @@ export class WebEnvironmentService extends DefaultEnvironmentService {
     //
     // - `https://vaultwarden.example.com/base/path/`
     // - `https://vaultwarden.example.com/base/path/#/some/route[?queryParam=...]`
+    // - `https://vaultwarden.example.com/base/path/?queryParam=...`
     //
     // We want to get to just `https://vaultwarden.example.com/base/path`.
     let baseUrl = this.win.location.href;
-    baseUrl = baseUrl.replace(/#.*/, ""); // Strip off `#` and everything after.
-    baseUrl = baseUrl.replace(/\/+$/, ""); // Trim any trailing `/` chars.
+    baseUrl = baseUrl.replace(/(\/+|\/*#.*|\/*\?.*)$/, ""); // Strip off trailing `/`, `#`, `?` and everything after.
     const urls = { base: baseUrl };
 
     // Find the region
