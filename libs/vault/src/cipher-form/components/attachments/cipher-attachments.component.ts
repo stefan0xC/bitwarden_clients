@@ -223,7 +223,7 @@ export class CipherAttachmentsComponent {
         this.cipherDomain,
         file,
         this.activeUserId,
-        this.organization()?.canEditAllCiphers,
+        this.admin() && this.organization()?.canEditAllCiphers,
       );
 
       // re-decrypt the cipher to update the attachments
@@ -301,7 +301,7 @@ export class CipherAttachmentsComponent {
 
     // Only try the admin API if the user has admin permissions
     const org = this.organization();
-    if (org != null && org.canEditAllCiphers) {
+    if (org != null && this.admin() && org.canEditAllCiphers) {
       const cipherResponse = await this.apiService.getCipherAdmin(id);
       const cipherData = new CipherData(cipherResponse);
       return new Cipher(cipherData);
